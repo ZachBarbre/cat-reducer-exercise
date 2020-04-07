@@ -10,16 +10,16 @@ const initalState = {
 const catReducer = (state = initalState, action) => {
     switch(action.type) {
         case ACTION_SET_NAME: 
-            const newName = action.payload;
+            const { name } = action.payload;
             return { 
                 ...state, 
-                name: newName
+                name: name
             }
         case ACTION_SET_ACTIVITY: 
-            const newActivity = action.payload;
+            const { activity } = action.payload;
             return { 
                 ...state,
-                activity: newActivity
+                activity: activity
             }
         default:
             return state;

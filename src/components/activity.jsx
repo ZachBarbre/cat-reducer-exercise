@@ -13,7 +13,7 @@ const Activity = ({ name, activity, setName, setActivity }) => {
     return(
     <>
         <h1>What is the cat doing?</h1>
-        <p>{name} is {activity}</p>
+        <p>{name.name} is {activity.activity}</p>
         <button onClick={() => setActivity('eating')}>EATING</button>
         <button onClick={() => setActivity('playing')}>PLAYING</button>
         <button onClick={() => setActivity('napping')}>NAPPING</button>
@@ -34,9 +34,11 @@ const Activity = ({ name, activity, setName, setActivity }) => {
 
 
 const mapStateToProps = state => {
-    const { cat } = state
-    console.log('cat', cat);
-    return cat
+    const activity = state.activityReducer;
+    const name = state.nameReducer;
+    console.log(name, activity);
+    return { name:name, activity: activity }
+
 
 }
 
