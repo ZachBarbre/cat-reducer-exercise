@@ -3,23 +3,23 @@
 import { ACTION_SET_NAME, ACTION_SET_ACTIVITY } from '../actionTypes';
 
 const initalState = {
-    name: 'Guster',
+    name: 'Nell',
     activity: 'napping'
 }
 
-const activityReducer = (state = initalState, action) => {
+const catReducer = (state = initalState, action) => {
     switch(action.type) {
         case ACTION_SET_NAME: 
-            const { name } = action.payload;
+            const newName = action.payload;
             return { 
-                name: name,
-                ...state 
+                ...state, 
+                name: newName
             }
         case ACTION_SET_ACTIVITY: 
-            const { activity } = action.payload
+            const newActivity = action.payload;
             return { 
                 ...state,
-                activity: activity
+                activity: newActivity
             }
         default:
             return state;
@@ -27,4 +27,4 @@ const activityReducer = (state = initalState, action) => {
     }
 }
 
-export default activityReducer;
+export default catReducer;
