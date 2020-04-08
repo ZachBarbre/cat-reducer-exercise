@@ -1,37 +1,43 @@
-import { ACTION_ADD_CAT, ACTION_SET_ACTIVITY } from '../actionTypes';
+import { ACTION_ADD_CAT, ACTION_SET_ACTIVITY, ACTION_SET_NAME } from '../actionTypes';
 
 const initialState = {
-    catIds: ['abc'], 
-    cats: {abc: {
-        name: 'Nell',
-        activity: 'napping'
+    cats: {
+        666: {
+            name: 'Nell',
+            activity: 'napping'
     }}
 };
 
 const catLadyReducer = (state = initialState, action) => {
     switch(action.type){
-        case ACTION_ADD_CAT: {
-            const { id, name } = action.payload;
+        case ACTION_SET_ACTIVITY:{
+            const { id, activity } = action.payload;
+            const name = state.cats[id].name;
             return {
-                ...state,
-                catIds: [...state.catIds, id],
                 cats: {
                     ...state.cats,
                     [id]: {
-                        name: name,
-                        activity: 'napping'
+                        name,
+                        activity
                     }
                 }
-            }
+
+            };
         }
-        case ACTION_SET_ACTIVITY: {
-            const { id, activity} = action.payload
+        case ACTION_SET_NAME: {
+            const { name } = action.payload;
+            return name;
+        }
+        case ACTION_ADD_CAT: {
+            const { name, activity } = action.payload;
+            const id = Math.random().toString(36).substring(2, 5) + Math.random().toString(36).substring(2, 5);
             return {
-                ...state,
-                catIds: [...state.catIds],
-                [id]: {
-                    ...state.cats[id],
-                    activity: activity
+                cats: {
+                    ...state.cats,
+                    [id]: { 
+                        name, 
+                        activity
+                    }
                 }
             }
         }

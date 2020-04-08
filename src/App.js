@@ -1,10 +1,12 @@
 import React from 'react';
-import Activity from './components/activity.jsx';
+import CatLady from './components/CatLady.jsx';
+import AddCat from './components/AddCat.jsx';
 
 function App() {
   return (
     <div className="App">
-      <Activity />
+      <CatLady />
+      <AddCat />
     </div>
   );
 }

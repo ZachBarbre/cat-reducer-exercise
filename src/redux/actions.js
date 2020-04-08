@@ -7,20 +7,19 @@ export const setName = name => {
     }
 }
 
-export const setActivity = (activity, id) => {
+export const setActivity = ({id, activity}) => {
     return {
         type: ACTION_SET_ACTIVITY,
         payload: { id, activity } 
     }
 }
 
-export const addCat = name => {
-    const id = Math.random().toString(36).substring(2, 5) + Math.random().toString(36).substring(2, 5);
+export const addCat = ({ name, activity }) => {
     return {
         type: ACTION_ADD_CAT,
         payload: { 
-            id,
-            name
+            name,
+            activity 
         }
     }
 }
